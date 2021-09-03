@@ -19,23 +19,24 @@ namespace CurvePainter
             Window.AllowUserResizing = true;
             Content.RootDirectory = "Content";
 
-            // enable AA (doesn't work :()
-            graphics.PreferMultiSampling = true;
+            // enable AA
+            // doesn't work :(
+            /*graphics.PreferMultiSampling = true;
             graphics.GraphicsProfile = GraphicsProfile.HiDef;
             graphics.PreparingDeviceSettings += Graphics_PreparingDeviceSettings;
-            graphics.ApplyChanges();
+            graphics.ApplyChanges();*/
         }
 
-        private void Graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
+        /*private void Graphics_PreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e)
         {
             graphics.PreferMultiSampling = true;
             e.GraphicsDeviceInformation.PresentationParameters.MultiSampleCount = 8;
-        }
+        }*/
 
         protected override void Initialize()
         {
-            GraphicsDevice.PresentationParameters.MultiSampleCount = 8;
-            graphics.ApplyChanges();
+            //GraphicsDevice.PresentationParameters.MultiSampleCount = 8;
+            //graphics.ApplyChanges();
 
             Utils.MaximizeWindow(Window, graphics);
             base.Initialize();
@@ -64,6 +65,7 @@ namespace CurvePainter
             graphics.GraphicsDevice.Clear(new Color(33, 33, 33));
 
             spriteBatch.Begin();
+
             area.Draw(spriteBatch);
 
             spriteBatch.End();

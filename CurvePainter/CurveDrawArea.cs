@@ -36,10 +36,10 @@ namespace CurvePainter
                 }
             }
 
+            FixSplineEndings();
             _drawingCurve?.Update();
             foreach (var curve in curves)
             {
-                FixSplineEndings();
                 curve.Update(gameTime);
             }
         }
@@ -92,12 +92,16 @@ namespace CurvePainter
 
         private void FixSplineEndings()
         {
-            for (int i = 1; i < curves.Count - 1; i++)
+            for (int i = 0; i < curves.Count; i++)
             {
                 if (curves[i] is SplineCurve curve)
                 {
-                    curve.prevPoint = curves[i - 1].controls[2];
-                    curve.nextPoint = curves[i + 1].controls[1];
+                    if (i - 1 > 0)
+                        curve.prevPoint = curves[i - 1].controls[2];
+                    if (i + 1 < curves.Count)
+                        curve.nextPoint = curves[i + 1].controls[1];
+
+                    curve.PopulatePoints();
                 }
             }
         }

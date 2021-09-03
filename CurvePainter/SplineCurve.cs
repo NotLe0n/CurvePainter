@@ -13,9 +13,10 @@ namespace CurvePainter
             nextPoint = controls[3];
 
             points = new Vector2[NumSteps * 3 + 1];
+            PopulatePoints();
         }
 
-        protected override void PopulatePoints()
+        public override void PopulatePoints()
         {
             // calculation only goes from point 1-2 with points 0 and 3 being "control points"
             // to still be able to see a connection from 0-1 and 2-3 we calculate 2 more times with the control points from another curve (gets updated in CurveDrawArea.FixSplineEndings())

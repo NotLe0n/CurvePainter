@@ -9,9 +9,10 @@ namespace CurvePainter
         public BezierCurve(Vector2 start, Vector2 end) : base(start, end)
         {
             points = new Vector2[NumSteps + 1];
+            PopulatePoints();
         }
 
-        protected override void PopulatePoints()
+        public override void PopulatePoints()
         {
             for (int i = 0; i <= NumSteps; i++)
             {

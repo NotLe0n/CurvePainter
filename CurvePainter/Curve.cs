@@ -31,8 +31,6 @@ namespace CurvePainter
 
         public void Update(GameTime gameTime)
         {
-            PopulatePoints();
-
             // if the curve is clicked select it
             if (Input.MouseLeftDown)
             {
@@ -60,6 +58,8 @@ namespace CurvePainter
                 {
                     controls[i] = Input.MousePosition;
                     _selected = true;
+
+                    PopulatePoints();
                 }
             }
 
@@ -123,6 +123,6 @@ namespace CurvePainter
             }
         }
 
-        protected abstract void PopulatePoints();
+        public abstract void PopulatePoints();
     }
 }
