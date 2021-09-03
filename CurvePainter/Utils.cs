@@ -47,7 +47,7 @@ namespace CurvePainter
                 new Rectangle(
                     (int)start.X,
                     (int)start.Y,
-                    (int)Vector2.Distance(start, end),
+                    (int)Vector2.Distance(start, end) + 1, // "+ 1" to fix tiny lines from not drawing and clean up line segments
                     width)
                 , null, color,
                 GetAngle(start, end), default, SpriteEffects.None, 0);
@@ -59,7 +59,7 @@ namespace CurvePainter
                 new Rectangle(
                     (int)start.X,
                     (int)start.Y,
-                    (int)Vector2.Distance(start, end),
+                    (int)Vector2.Distance(start, end) + 1, // "+ 1" to fix tiny lines from not drawing and clean up line segments
                     width)
                 , null, color,
                 GetAngle(start, end) + rotation, anchor, effects, 0);
