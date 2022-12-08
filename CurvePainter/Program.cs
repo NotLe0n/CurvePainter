@@ -1,14 +1,13 @@
 ﻿using System;
 
-namespace CurvePainter
+namespace CurvePainter;
+
+public static class Program
 {
-    public static class Program
-    {
-        [STAThread]
-        static void Main()
-        {
-            using (var game = new CurvePainter())
-                game.Run();
-        }
-    }
+	[STAThread]
+	private static void Main()
+	{
+		using var game = new CurvePainter();
+		game.Run();
+	}
 }
