@@ -69,6 +69,18 @@ namespace CurvePainter
                 clickedControl = -1;
             }
 
+            var min = Vector2.Min(Vector2.Min(controls[0], controls[1]), Vector2.Min(controls[2], controls[3]));
+            var max = Vector2.Max(Vector2.Max(controls[0], controls[1]), Vector2.Max(controls[2], controls[3]));
+            bool inside = Input.MousePosition.X >= min.X &&
+                          Input.MousePosition.X <= min.X + max.X &&
+                          Input.MousePosition.Y >= min.Y &&
+                          Input.MousePosition.Y <= min.Y + max.Y;
+
+            if (!inside)
+            {
+                _isHovering = false;
+                return;
+            }
 
             // detect if mouse is hovering over curve
             _isHovering = false;
@@ -87,7 +99,7 @@ namespace CurvePainter
             }
 
             float distance = Vector2.Distance(closestPoint, Input.MousePosition);
-            const float detectionRange = 50;
+            const float detectionRange = 10;
             if (distance > -detectionRange && distance < detectionRange)
             {
                 _isHovering = true;

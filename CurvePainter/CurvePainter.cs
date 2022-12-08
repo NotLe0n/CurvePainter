@@ -67,6 +67,7 @@ namespace CurvePainter
             spriteBatch.Begin();
 
             area.Draw(spriteBatch);
+            spriteBatch.DrawString(font, "frame: " + (int)gameTime.TotalGameTime.TotalMilliseconds % 60, new Vector2(10, 100), Color.White);
 
             spriteBatch.End();
 
